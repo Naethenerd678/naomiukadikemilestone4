@@ -1,0 +1,12 @@
+body {
+  font-family: Arial; 
+  padding: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+}
+
+img {
+    width: 100px;
+}
