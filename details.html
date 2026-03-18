@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Book Details </title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bookshelf.html">My Bookshelf</a>
+    </nav>
+    <div id= "details"></div>
+    <script src = "https://code.jquery.com.jquery-3.6.0.min.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      let url =`https://www.googleapis.com/books/v1/volumes/${id}`;
+
+      $.getJSON(url, function(book)) {
+          let info = book.volumeInfo;
+        
+          $("#details").html(`
+          <h1>${info.title}</h1>
+          <p><b>Authors:</b> ${info.authors || "N/A"} </p>
+          <p><b>Publisher:</b> $(info.publisher || "N/A"} </p>
+          <p>${info.description || "No description"} </p>
+          <img src= "${info.imageLinks?.thumbnail || ""}">
+          `);
+      });
+      
+      
+    </script>
+  </body>
+</html>
