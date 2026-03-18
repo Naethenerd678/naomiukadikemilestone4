@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Bookshelf</title>
+    <link rel= "stylesheet" href="style.css"
+  </head>
+</html>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="bookshelf.html">My Bookshelf</a>  
+</nav>
+
+<h1>My Bookshelf</h1>
+
+<div id="bookshelf"></div>
+
+<script> src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  let bookIds = [
+    "zyTCAlFPjgYC",
+    "uW3kFWAAQBAJ",
+    "m8dPPgAACAAJ"
+    ];
+
+  bookIds.forEach(id => {
+    let url = `https://www.googleapis.com.books/v1/volumes/${id}`;
+
+    $(#bookshelf").append(`
+      <div>
+        <img src="${img}">
+      <a href="details.html?id=${id}">${title}</a>
+      </div>
+      `);
+    });
+});
+<script>
+</body>
+</html>
+</script>
