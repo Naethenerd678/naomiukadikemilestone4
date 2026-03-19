@@ -6,7 +6,7 @@
   </head>
   <body>
     <nav>
-      <a href ="index.html "Home </a>
+      <a href ="index.html "> Home </a>
       <a href ="bookshelf.html"> My Bookshelf</a>
     </nav>
     <h1> Search Books</h1>
