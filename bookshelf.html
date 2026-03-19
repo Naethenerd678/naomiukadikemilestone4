@@ -3,7 +3,8 @@
 <head>
   <title>My Bookshelf</title>
   <link rel= "stylesheet" href="style.css">
-</head><body>
+</head>
+<body>
   
 </body>
   
@@ -27,6 +28,11 @@ let bookIds = [
 
   bookIds.forEach(id => {
     let url = `https://www.googleapis.com/books/v1/volumes/${id}`;
+    
+    $.getJSON(url, function(data) {
+        let title = data.volumeInfo.title;
+        let img = data.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x192?text=No+image";
+    })
 
     $("#bookshelf").append(`
       <div>
@@ -35,9 +41,7 @@ let bookIds = [
       </div>
       `);
     });
-});
 </script>
   
 </body>
 </html>
-
