@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> Book Details </title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bookshelf.html">My Bookshelf</a>
-    </nav>
-    <div id= "details"></div>
-    <script src = "https://code.jquery.com.jquery-3.6.0.min.js"></script>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
+<head>
+  <title>My Bookshelf</title>
+  <link rel= "stylesheet" href="style.css">
+</head>
+<body>
+  
+<nav>
+  <a href="index.html">Home</a>
+  <a href="bookshelf.html">My Bookshelf</a>  
+</nav>
+</body>
+<h1>My Bookshelf</h1>
 
-      let url =`https://www.googleapis.com/books/v1/volumes/${id}`;
+<div id="bookshelf"></div>
 
-      $.getJSON(url, function(book)) {
-          let info = book.volumeInfo;
-        
-          $("#details").html(`
-          <h1>${info.title}</h1>
-          <p><b>Authors:</b> ${info.authors || "N/A"} </p>
-          <p><b>Publisher:</b> $(info.publisher || "N/A"} </p>
-          <p>${info.description || "No description"} </p>
-          <img src= "${info.imageLinks?.thumbnail || ""}">
-          `);
-      });
-      
-      
-    </script>
-  </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+<script>
+let bookIds = [
+    "zyTCAlFPjgYC",
+    "uW3kFWAAQBAJ",
+    "m8dPPgAACAAJ"
+    ];
+
+  bookIds.forEach(id => {
+    let url = `https://www.googleapis.com/books/v1/volumes/${id}`;
+    
+    $.getJSON(url, function(data) {
+        let title = data.volumeInfo.title;
+        let img = data.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x192?text=No+image";
+    })
+
+    $("#bookshelf").append(`
+      <div>
+        <img src="${img}">
+      <a href="details.html?id=${id}">${title}</a>
+      </div>
+      `);
+    });
+</script>
+  
+</body>
 </html>
