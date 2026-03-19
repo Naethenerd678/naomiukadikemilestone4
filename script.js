@@ -8,7 +8,7 @@ $("#searchBtn").click(function() {
       data.items.forEach(book => {
         let title = book.volumeInfo.title;
         let id = book.id;
-        let img = book.volumeInfo.imageLinks?.thumbnail || ";
+        let img = book.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x192?text=No+Image";
 
         $("#results").append(`
             <div>
