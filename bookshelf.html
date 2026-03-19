@@ -6,8 +6,6 @@
 </head>
 <body>
   
-</body>
-  
 <nav>
   <a href="index.html">Home</a>
   <a href="bookshelf.html">My Bookshelf</a>  
@@ -32,12 +30,14 @@ let bookIds = [
     $.getJSON(url, function(data) {
         let title = data.volumeInfo.title;
         let img = data.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x192?text=No+image";
+        let authors = data.volumeInfo.authors ? data.volumeInfo.authors.join("") " "Unknown Author";
     })
 
     $("#bookshelf").append(`
-      <div>
+      <div class="book-item">
         <img src="${img}">
       <a href="details.html?id=${id}">${title}</a>
+      <p><strong>Authors:</strong> ${authors}</p>
       </div>
       `);
     });
